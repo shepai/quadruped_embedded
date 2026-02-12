@@ -22,6 +22,6 @@ if __name__=="__main__":
     print("nu:", env.m.nu)
     print("njnt:", env.m.njnt)
     print("actuator mapping:", env.m.actuator_trnid)
-    with viewer.launch_passive(env.m, env.data) as v:
+    with viewer.launch(env.m, env.data) as v:
         while v.is_running():
-            env.step([np.random.random() for _ in range(12)]) 
+            env.step([np.random.random()*100 for _ in range(12)]) 
