@@ -1,0 +1,107 @@
+<mujoco model="Quadruped_prestip">
+    <compiler angle="radian" coordinate="local"/>
+    <option gravity="0 0 -9.81"/>
+
+    <asset>
+        <mesh name="base" file="meshes/base_link.STL"/>
+
+        <mesh name="l1_hip" file="meshes/leg_1_hip.STL"/>
+        <mesh name="l1_knee" file="meshes/leg_1_knee.STL"/>
+        <mesh name="l1_ankle" file="meshes/leg_1_ankle.STL"/>
+
+        <mesh name="l2_hip" file="meshes/leg_2_hip.STL"/>
+        <mesh name="l2_knee" file="meshes/leg_2_knee.STL"/>
+        <mesh name="l2_ankle" file="meshes/leg_2_ankle.STL"/>
+
+        <mesh name="l3_hip" file="meshes/leg_3_hip.STL"/>
+        <mesh name="l3_knee" file="meshes/leg_3_knee.STL"/>
+        <mesh name="l3_ankle" file="meshes/leg_3_ankle.STL"/>
+
+        <mesh name="l4_hip" file="meshes/leg_4_hip.STL"/>
+        <mesh name="l4_knee" file="meshes/leg_4_knee.STL"/>
+        <mesh name="l4_ankle" file="meshes/leg_4_ankle.STL"/>
+    </asset>
+
+    <worldbody>
+        <body name="base" pos="0 0 0">
+            <geom type="mesh" mesh="base"/>
+
+            <!-- LEG 1 -->
+            <body name="leg1_hip" pos="0.06197 -0.08255713 0.0385"
+                  euler="3.14159265 0 -0.41814403">
+                <joint name="leg1_hip_joint" type="hinge" axis="0 0 1" range="-3 3"/>
+                <geom type="mesh" mesh="l1_hip"/>
+
+                <body name="leg1_knee" pos="0.060665 0.04177 0.036307"
+                      euler="0 0 1.57079633">
+                    <joint name="leg1_knee_joint" type="hinge" axis="0 -1 0" range="-3 3"/>
+                    <geom type="mesh" mesh="l1_knee" />
+
+                    <body name="leg1_ankle" pos="-0.04229262 0.0005 -0.04905796"
+                          euler="3.14159265 -1.02694661 -3.14159265">
+                        <joint name="leg1_ankle_joint" type="hinge" axis="0 -1 0" range="-3 3"/>
+                        <geom type="mesh" mesh="l1_ankle"/>
+                    </body>
+                </body>
+            </body>
+
+            <!-- LEG 2 -->
+            <body name="leg2_hip" pos="0.06177 0.0055571 0.0385"
+                  euler="3.1416 0 0.54496">
+                <joint name="leg2_hip_joint" type="hinge" axis="0 0 -1" range="-3 3"/>
+                <geom type="mesh" mesh="l2_hip"/>
+
+                <body name="leg2_knee" pos="0.060665 -0.04197 0.03630713"
+                      euler="0 0 1.57079633">
+                    <joint name="leg2_knee_joint" type="hinge" axis="0 -1 0" range="-3 3"/>
+                    <geom type="mesh" mesh="l2_knee"/>
+
+                    <body name="leg2_ankle" pos="0.02194688 0.0005 0.06094"
+                          euler="0 0.3566208 0">
+                        <joint name="leg2_ankle_joint" type="hinge" axis="0 -1 0" range="-3 3"/>
+                        <geom type="mesh" mesh="l2_ankle"/>
+                    </body>
+                </body>
+            </body>
+
+            <!-- LEG 3 -->
+            <body name="leg3_hip" pos="-0.04277 0.0055571 0.0395"
+                  euler="-3.1416 0 3.1072">
+                <joint name="leg3_hip_joint" type="hinge" axis="0 0 1" range="-3 3"/>
+                <geom type="mesh" mesh="l3_hip"/>
+
+                <body name="leg3_knee" pos="0.060665 0.04177 0.03730713"
+                      euler="0 0 1.57079633">
+                    <joint name="leg3_knee_joint" type="hinge" axis="0 1 0" range="-3 3"/>
+                    <geom type="mesh" mesh="l3_knee"/>
+
+                    <body name="leg3_ankle" pos="0.02027619 0.0005 0.06151606"
+                          euler="3.14159265 -0.27472502 0">
+                        <joint name="leg3_ankle" type="hinge" axis="0 -1 0" range="-3 3"/>
+                        <geom type="mesh" mesh="l3_ankle"/>
+                    </body>
+                </body>
+            </body>
+
+            <!-- LEG 4 -->
+            <body name="leg4_hip" pos="-0.04277 -0.08255713 0.0385"
+                  euler="-3.14159265 0 2.41920859">
+                <joint name="leg4_hip_joint" type="hinge" axis="0 0 -1" range="-3 3"/>
+                <geom type="mesh" mesh="l4_hip"/>
+
+                <body name="leg4_knee" pos="0.060665 -0.04177 0.03630713"
+                      euler="0 0 -1.57079633">
+                    <joint name="leg4_knee_joint" type="hinge" axis="0 -1 0" range="-3 3"/>
+                    <geom type="mesh" mesh="l4_knee"/>
+
+                    <body name="leg4_ankle" pos="0.00334718 -0.0005 0.06468497"
+                          euler="-3.14159265 -0.51980136 3.14159265">
+                        <joint name="leg4_ankle_joint" type="hinge" axis="0 -1 0" range="-3 3"/>
+                        <geom type="mesh" mesh="l4_ankle"/>
+                    </body>
+                </body>
+            </body>
+
+        </body>
+    </worldbody>
+</mujoco>
