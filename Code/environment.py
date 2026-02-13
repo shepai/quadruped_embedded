@@ -12,7 +12,8 @@ class environment:
         for i in range(12):
             self.data.ctrl[i] = target_angles[i]
         #print(self.data.ctrl)
-        mujoco.mj_step(self.m, self.data)
+        for _ in range(20):   # let joints actually move
+            mujoco.mj_step(self.m, self.data)
 
     def observe(self): #gather observations
         pass 
@@ -22,6 +23,10 @@ if __name__=="__main__":
     print("nu:", env.m.nu)
     print("njnt:", env.m.njnt)
     print("actuator mapping:", env.m.actuator_trnid)
-    with viewer.launch(env.m, env.data) as v:
-        while v.is_running():
-            env.step([np.random.random()*100 for _ in range(12)]) 
+    v = viewer.launch_passive(env.m, env.data)
+    print("BEGIN")
+
+    while True:
+        env.step(np.random.uniform(-1.5, 1.5, size=12)*0)
+        v.sync()
+            
